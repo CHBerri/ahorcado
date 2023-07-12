@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;700&family=Kablammo&family=Roboto&family=Rubik+Dirt&family=Titillium+Web:wght@200;400;700&family=Ubuntu+Mono&family=Ysabeau+Infant&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="data">
+            <p id="life" class="info">Vidas:</p>
+
+            <div class="col-2 central-columns info-d" id="mensajes">
+                <p>Letras usadas:</p>
+                <p id="lista" class="info"></p>
+            </div>
+        </div>
+
+        <h1>Adivina la palabra oculta</h1>
+        <p id="palabraSecreta"></p>
+
+        <div class="contenedor-central">
+            <div id="images" class="col-1 central-columns"></div>
+        </div>
+        
+        <div>
+            <input type="text">
+            <button type="button" id="try">Intentar</button>
+        </div>
+
+<!-- Ventanas Nodales-->
+        <div class="ventana" id="ventana">
+            <div>
+                <p id="perdedor"></p>
+                <div class="img-loser"></div>
+                <button type="button" id="retry">Vuelve a intentarlo</button>
+            </div>
+        </div>
+
+        <div class="ventana-2" id="ventana2">
+            <div>
+                <p id="palabrota"></p>
+                <p class="def" id="definicion"></p>
+                <button type="button" id="cerrar">X</button>
+            </div>
+        </div>
+
+        <div class="ventana-3" id="ventana3">
+            <div>
+                <p>¡Felicidades! eres un(a) crack.</p>
+                <div class="img-winner"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
