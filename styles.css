@@ -204,11 +204,11 @@ button {
     font-size: 1.5rem;
 }
 
-.ventana-2 div {
+.ventana-2 .contenedor-ventana-2 {
     padding: 3rem;
     position: relative;
     background-image: linear-gradient(to bottom, aqua, rgb(0, 197, 197));
-    width: 700px;
+    width: 90%;
     height: 400px;
 }
 
@@ -266,7 +266,7 @@ button {
         height: 200px;
     }
 
-    .ventana-2 div {
+    .ventana-2 .contenedor-ventana-2 {
         width: 95%;
         height: 90%;
     }
