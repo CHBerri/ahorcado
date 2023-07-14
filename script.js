@@ -59,6 +59,11 @@ const palabrota = document.querySelector('#palabrota')
 const perdedor = document.querySelector('#perdedor')
 const definicion = document.querySelector('#definicion')
 let audio = new Audio('mr increible 1.mp3')
+window.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter' && input.value != '') {
+        buscarLetra()
+    }
+})
 let letra2 = ''
 let audios = 1
 let seleccion = 0
@@ -134,70 +139,78 @@ function reiniciaValores() {
 
 function buscarLetra() {
 
-    let letra = input.value;
+    if(input.value == "") {
+        console.log('Introduce una letra')
+    } else {
+        let letra = input.value.toLowerCase();
     
-    switch(letra) {
-        case 'a':
-            letra2 = 'á'
-            break;
-        case 'e':
-            letra2 = 'é'
-            break;
-        case 'i':
-            letra2 = 'í'
-            break;
-        case 'o':
-            letra2 = 'ó'
-            break;
-        case 'u':
-            letra2 = 'ú'
-            break;
-        default:
-            break;
-    }
-
-    if(palabraBuscada.includes(letra) || palabraBuscada.includes(letra2)) {
-        palabraBuscada.forEach( function (element, index) {     // Revisa cada letra de la palabra actual
-            if(palabraBuscada[index] == letra) {                // En caso de que la letra seleccionada se encuentre, la reemplaza
-                palabraOculta[index] = letra
-            }
-            if(palabraBuscada[index] == letra2) {
-                palabraOculta[index] = letra2
-            }
-        }) 
-
-        if(!palabraOculta.includes("_") && vidas != 0) {        // Si la palabra ya se encontró y aun tiene vidas, reinicia el juego
-            ventana2.style.display = 'flex'
-            palabrota.textContent = palabraBuscada.join("")
-            definicion.textContent = palabras[seleccion].definicion
-            palabras.splice(seleccion, 1)
-            reiniciaValores();
-            generarPalabras();
-            input.focus()
-            return
-        } 
-    } else {                                                    //Cambia las imagenes y agrega las letras no encontradas
-        nivelDePerdicion++                                      // Cada vez que se falla una vida
-        vidas--
-        vidas_label.textContent = `Vidas: ${vidas}`
-        audios++
-        audio.src = `mr increible ${audios}.mp3`
-        audio.play()
-        imagenes.style.background = `url('mr increible ${nivelDePerdicion}.png')`
-        imagenes.style.backgroundSize = 'contain'
-        imagenes.style.backgroundPosition = 'center'
-        imagenes.style.backgroundRepeat = 'no-repeat'
-        letrasFallidas.push(letra)
-        letrasUsadas.textContent = letrasFallidas.join(", ") 
-
-        if(vidas == 0) {                                                  // If que indica si ya perdió
-            ventana.style.display = 'flex'
-            perdedor.textContent = '¡Perdiste! \nla palabra era: ' + palabras[seleccion].palabra.join("")
+        switch(letra) {
+            case 'a':
+                letra2 = 'á'
+                break;
+            case 'e':
+                letra2 = 'é'
+                break;
+            case 'i':
+                letra2 = 'í'
+                break;
+            case 'o':
+                letra2 = 'ó'
+                break;
+            case 'u':
+                letra2 = 'ú'
+                break;
+            default:
+                break;
         }
-    }
     
-    p.textContent = palabraOculta.join("");
-    input.focus()
-    input.value = ""
+        if(palabraBuscada.includes(letra) || palabraBuscada.includes(letra2)) {
+            palabraBuscada.forEach( function (element, index) {     // Revisa cada letra de la palabra actual
+                if(palabraBuscada[index] == letra) {                // En caso de que la letra seleccionada se encuentre, la reemplaza
+                    palabraOculta[index] = letra
+                }
+                if(palabraBuscada[index] == letra2) {
+                    palabraOculta[index] = letra2
+                }
+            }) 
+    
+            if(!palabraOculta.includes("_") && vidas != 0) {        // Si la palabra ya se encontró y aun tiene vidas, reinicia el juego
+                ventana2.style.display = 'flex'
+                palabrota.textContent = palabraBuscada.join("")
+                definicion.textContent = palabras[seleccion].definicion
+                audio.src = 'correcto.mp3'
+                audio.play()
+                palabras.splice(seleccion, 1)
+                reiniciaValores();
+                generarPalabras();
+                input.focus()
+                return
+            } 
+        } else {                                                    //Cambia las imagenes y agrega las letras no encontradas
+            nivelDePerdicion++                                      // Cada vez que se falla una vida
+            vidas--
+            vidas_label.textContent = `Vidas: ${vidas}`
+            audios++
+            audio.src = `mr increible ${audios}.mp3`
+            audio.play()
+            imagenes.style.background = `url('mr increible ${nivelDePerdicion}.png')`
+            imagenes.style.backgroundSize = 'contain'
+            imagenes.style.backgroundPosition = 'center'
+            imagenes.style.backgroundRepeat = 'no-repeat'
+            letrasFallidas.push(letra)
+            letrasUsadas.textContent = letrasFallidas.join(", ") 
+    
+            if(vidas == 0) {                                                  // If que indica si ya perdió
+                ventana.style.display = 'flex'
+                perdedor.textContent = '¡Perdiste! \nla palabra era: ' + palabras[seleccion].palabra.join("")
+            }
+        }
+        
+        p.textContent = palabraOculta.join("");
+        input.focus()
+        input.value = ""
+    }
+
+
 
 } 

@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;700&family=Kablammo&family=Roboto&family=Rubik+Dirt&family=Titillium+Web:wght@200;400;700&family=Ubuntu+Mono&family=Ysabeau+Infant&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;700&family=Kablammo&family=PT+Sans&family=Roboto&family=Rubik+Dirt&family=Titillium+Web:wght@200;400;700&family=Ubuntu+Mono&family=Ysabeau+Infant&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
+    <main class="main">
         <div class="data">
-            <p id="life" class="info">Vidas:</p>
+            <div class="vidas">
+                <p id="life" class="info">Vidas:</p>
+            </div>
 
-            <div class="col-2 central-columns info-d" id="mensajes">
+            <div class="col-2 info-d" id="mensajes">
                 <p>Letras usadas:</p>
                 <p id="lista" class="info"></p>
             </div>
         </div>
 
-        <h1>Adivina la palabra oculta</h1>
-        <p id="palabraSecreta"></p>
+        <div class="titulo"> 
+            <h1>Adivina la palabra oculta</h1>
+            <p id="palabraSecreta"></p>
+        </div>
+
 
         <div class="contenedor-central">
             <div id="images" class="col-1 central-columns"></div>
@@ -32,7 +37,7 @@
 
 <!-- Ventanas Nodales-->
         <div class="ventana" id="ventana">
-            <div>
+            <div class="contenedor-ventana-1">
                 <p id="perdedor"></p>
                 <div class="img-loser"></div>
                 <button type="button" id="retry">Vuelve a intentarlo</button>
@@ -48,7 +53,7 @@
         </div>
 
         <div class="ventana-3" id="ventana3">
-            <div>
+            <div class="contenedor-ventana-3">
                 <p>¡Felicidades! eres un(a) crack.</p>
                 <div class="img-winner"></div>
             </div>
